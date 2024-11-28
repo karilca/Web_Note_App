@@ -2,7 +2,7 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 30px;
-    background-color: #f5f7fa;
+    background-color: #ecf0f1;
     line-height: 1.6;
 }
 
@@ -77,7 +77,7 @@ button:hover {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
+    transition: transform 0.2s ease, opacity 0.2s ease;
     position: relative;
 }
 
@@ -130,4 +130,49 @@ button:hover {
     .notes-container {
         grid-template-columns: 1fr;
     }
+}
+
+.note-added {
+    animation: noteFadeIn 0.5s forwards;
+}
+
+.note-remove {
+    opacity: 0;
+    transform: translateY(-20px);
+}
+
+@keyframes noteFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.edit-btn {
+    position: absolute;
+    top: 15px;
+    right: 55px;
+    background-color: #f1c40f;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-btn:hover {
+    background-color: #d4ac0d;
+}
+
+html {
+    scroll-behavior: smooth;
 }
