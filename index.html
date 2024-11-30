@@ -12,13 +12,18 @@
 <body>
     <div class="container">
         <header>
-            <h1>📝 Web Note App</h1>
+            <!-- Add language selector -->
+            <select id="languageSelector" onchange="changeLanguage(this.value)">
+                <option value="en">English</option>
+                <option value="hr">Hrvatski</option>
+            </select>
+            <h1 id="appTitle">📝 Web Note App</h1>
         </header>
         <main>
             <section class="note-input">
                 <input type="text" id="noteTitle" placeholder="Enter note title..." maxlength="50" aria-label="Note Title">
                 <textarea id="noteContent" placeholder="Write your note here..." maxlength="500" aria-label="Note Content"></textarea>
-                <button onclick="addNote()"><i class="fas fa-plus"></i> Add Note</button>
+                <button id="addNoteButton" onclick="addNote()"><i class="fas fa-plus"></i> Add Note</button>
             </section>
             <section class="notes-container" id="notesContainer" aria-live="polite">
                 <!-- Notes will be added here -->

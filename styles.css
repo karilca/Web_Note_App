@@ -176,3 +176,14 @@ button:hover {
 html {
     scroll-behavior: smooth;
 }
+
+#languageSelector {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 5px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: white;
+}
