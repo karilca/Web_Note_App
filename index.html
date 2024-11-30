@@ -18,11 +18,20 @@
                 <option value="hr">Hrvatski</option>
             </select>
             <h1 id="appTitle">📝 Web Note App</h1>
+            <div class="top-bar">
+                <input type="text" id="searchInput" placeholder="Search notes..." oninput="searchNotes()" aria-label="Search Notes">
+                <select id="sortSelector" onchange="sortNotes(this.value)">
+                    <option value="date">Sort by Date</option>
+                    <option value="title">Sort by Title</option>
+                </select>
+                <button id="darkModeToggle" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
+            </div>
         </header>
         <main>
             <section class="note-input">
                 <input type="text" id="noteTitle" placeholder="Enter note title..." maxlength="50" aria-label="Note Title">
                 <textarea id="noteContent" placeholder="Write your note here..." maxlength="500" aria-label="Note Content"></textarea>
+                <input type="text" id="noteTags" placeholder="Enter tags separated by commas..." aria-label="Note Tags">
                 <button id="addNoteButton" onclick="addNote()"><i class="fas fa-plus"></i> Add Note</button>
             </section>
             <section class="notes-container" id="notesContainer" aria-live="polite">
