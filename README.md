@@ -40,7 +40,7 @@ A sophisticated and user-friendly web-based note-taking application designed to 
 
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/web-note-app.git
+    git clone https://github.com/karilca/Web_Note_App.git
     cd web-note-app
     ```
 
