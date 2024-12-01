@@ -1,13 +1,16 @@
-
 import React, { useState } from 'react';
+import { EditorState, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 function NoteInput({ addNote }) {
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [tags, setTags] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const content = convertToRaw(editorState.getCurrentContent());
     addNote({
       id: Date.now(),
       title,
@@ -16,7 +19,7 @@ function NoteInput({ addNote }) {
       date: new Date().toISOString()
     });
     setTitle('');
-    setContent('');
+    setEditorState(EditorState.createEmpty());
     setTags('');
   };
 
@@ -32,14 +35,13 @@ function NoteInput({ addNote }) {
           aria-label="Note Title"
           required
         />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          placeholder="Write your note here..."
-          maxLength="500"
-          aria-label="Note Content"
-          required
-        ></textarea>
+        <Editor
+          editorState={editorState}
+          onEditorStateChange={setEditorState}
+          wrapperClassName="editor-wrapper"
+          editorClassName="editor"
+          toolbarClassName="toolbar"
+        />
         <input
           type="text"
           value={tags}
@@ -47,7 +49,7 @@ function NoteInput({ addNote }) {
           placeholder="Enter tags separated by commas..."
           aria-label="Note Tags"
         />
-        <button type="submit"><i className="fas fa-plus"></i> Add Note</button>
+        <button type="submit" aria-label="Add Note"><i className="fas fa-plus"></i> Add Note</button>
       </form>
     </section>
   );

@@ -27,6 +27,18 @@ header {
   align-items: center;
 }
 
+header input[type="text"] {
+  padding: 8px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+header input[type="text"]:focus {
+  outline: none;
+  border-color: #3498db;
+}
+
 #languageSelector {
   padding: 5px;
   border: 2px solid #e0e0e0;
@@ -304,4 +316,24 @@ button:hover {
   .notes-container {
     grid-template-columns: 1fr;
   }
+}
+
+.editor-wrapper {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.editor {
+  min-height: 200px;
+  padding: 10px;
+}
+
+.toolbar {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.editor-readonly {
+  min-height: 100px;
+  padding: 10px;
 }

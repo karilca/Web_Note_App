@@ -1,8 +1,7 @@
-
 import React from 'react';
 import Note from './Note';
 
-function NoteList({ notes, deleteNote, editNote }) {
+function NoteListComponent({ notes, deleteNote, editNote }) {
   return (
     <section className="notes-container" aria-live="polite">
       {notes.map(note => (
@@ -11,5 +10,7 @@ function NoteList({ notes, deleteNote, editNote }) {
     </section>
   );
 }
+
+const NoteList = React.memo(NoteListComponent);
 
 export default NoteList;

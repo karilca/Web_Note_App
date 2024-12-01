@@ -29,7 +29,7 @@ const translations = {
     }
 };
 
-function Header({ language, setLanguage, darkMode, toggleDarkMode }) {
+function Header({ language, setLanguage, darkMode, toggleDarkMode, searchTerm, setSearchTerm }) {
   return (
     <header>
       <h1>{translations[language].appTitle}</h1>
@@ -49,6 +49,13 @@ function Header({ language, setLanguage, darkMode, toggleDarkMode }) {
         >
           <i className={`fas fa-${darkMode ? 'sun' : 'moon'}`}></i>
         </button>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder={translations[language].searchPlaceholder}
+          aria-label="Search Notes"
+        />
       </div>
     </header>
   );

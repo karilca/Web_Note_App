@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { EditorState, Editor, convertFromRaw } from 'draft-js';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
-function Note({ note, deleteNote, editNote, language }) {
+function NoteComponent({ note, deleteNote, editNote, language }) {
   const [isLocked, setIsLocked] = useState(note.isLocked);
   const [password, setPassword] = useState('');
   const [showUnlockPrompt, setShowUnlockPrompt] = useState(false);
@@ -27,8 +29,17 @@ function Note({ note, deleteNote, editNote, language }) {
     }
   };
 
+  const contentState = convertFromRaw(note.content);
+  const editorState = EditorState.createWithContent(contentState);
+
   return (
-    <div className={`note ${isLocked ? 'locked' : ''}`} data-id={note.id} data-date={note.date}>
+    <div
+      className={`note ${isLocked ? 'locked' : ''}`}
+      data-id={note.id}
+      data-date={note.date}
+      role="article"
+      aria-label={`Note titled ${note.title}`}
+    >
       <button className="edit-btn" onClick={() => !isLocked && editNote(note.id)} title={translations[language].editButtonTitle}>
         <i className="fas fa-edit"></i>
       </button>
@@ -41,7 +52,13 @@ function Note({ note, deleteNote, editNote, language }) {
       
       <div className={isLocked ? 'locked-content' : ''}>
         <h3>{note.title}</h3>
-        <p>{note.content}</p>
+        <Editor
+          editorState={editorState}
+          readOnly={true}
+          toolbarHidden={true}
+          wrapperClassName="editor-wrapper"
+          editorClassName="editor-readonly"
+        />
         {note.tags.length > 0 && (
           <div className="note-tags">
             {note.tags.map((tag, index) => (
@@ -63,5 +80,7 @@ function Note({ note, deleteNote, editNote, language }) {
     </div>
   );
 }
+
+const Note = React.memo(NoteComponent);
 
 export default Note;
