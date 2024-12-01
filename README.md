@@ -108,17 +108,3 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 ```
-
-This README.md provides:
-1. A clear overview of the project
-2. List of main features
-3. Technologies used
-4. Setup instructions
-5. Project structure
-6. Development commands
-7. Key features explanation
-8. Contribution guidelines
-
-The format is clean and well-organized with emojis for better readability. You may want to customize the repository URLs and other specific details before publishing.
-
-Made changes.
